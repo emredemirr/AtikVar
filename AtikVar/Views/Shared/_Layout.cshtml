@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title · Atık Var!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon.png">
+    <link href="~/Content/all.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark @(Session["role"]!=null && Session["role"].ToString() == "1" ? "bg-dark" : "bg-success")">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/images/logo.png" width="100"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">
+                        <a class="nav-link" href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Anasayfa <span class="sr-only">(Aktif)</span></a>
+                    </li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Waste" ? "active" : "")">
+                        <a class="nav-link" href="@Url.Action("Index","Waste")"><i class="fa fa-recycle"></i> Atıklar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-chart-pie"></i> İstatistik</a>
+                    </li>
+                    @if (Session["userId"] == null)
+                    {
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Register" ? "active" : "")">
+                            <a href="@Url.Action("Index", "Register")" class="nav-link"><i class="fa fa-user-plus"></i> Kayıt Ol</a>
+                        </li>
+                    }
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "About" ? "active" : "")">
+                        <a href="@Url.Action("Index","About")" class="nav-link"><i class="fa fa-info-circle"></i> Hakkında</a>
+                    </li>
+                </ul>
+                @if (Session["userId"] == null)
+                {
+                    <span class="navbar-text"><a href="@Url.Action("Index", "Login")" class="btn text-dark btn-light"><i class="fa fa-user-circle"></i> Giriş Yap</a></span>
+                }
+                else
+                {
+                    <span class="navbar-text"><a href="@Url.Action("Logout", "Login")" class="btn text-dark btn-light"><i class="fa fa-sign-out-alt"></i> Çıkış</a></span>
+                }
+            </div>
+        </div>
+    </nav>
+    <main class="container pt-2">
+        @RenderBody()
+    </main>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/atikVar.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

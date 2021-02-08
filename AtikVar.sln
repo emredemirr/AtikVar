@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtikVar", "AtikVar\AtikVar.csproj", "{FE34936C-CFF9-43F1-B4E1-CE983B89A840}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE34936C-CFF9-43F1-B4E1-CE983B89A840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE34936C-CFF9-43F1-B4E1-CE983B89A840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE34936C-CFF9-43F1-B4E1-CE983B89A840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE34936C-CFF9-43F1-B4E1-CE983B89A840}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AC65557-16B9-42AE-9FFA-D6707DFA84DC}
+	EndGlobalSection
+EndGlobal

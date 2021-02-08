@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Atık Ekle";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron bg-light shadow">
+            <h1 class="display-4">Atık Ekle</h1>
+            <hr class="my-4">
+            @if (ViewBag.message != null)
+            {
+                <div class="alert alert-light p-4 shadow border">
+                    @ViewBag.message
+                </div>
+            }
+            <h4 class="lead my-4">Atık Ekleme Formu</h4>
+            <form action="@Url.Action("Add","Waste")" class="needs-validation" method="post" novalidate>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="atikTur">Atık Türü</label>
+                    </div>
+                    <select class="custom-select" id="atikTur" name="atikTuru" required>
+                        @if (ViewBag.wasteTypes != null)
+                        {
+                            foreach (var type in ViewBag.wasteTypes)
+                            {
+                                <option value="@type.id">@type.cinsi</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">Api bağlantı hatası</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">
+                        Lütfen Atık türü seçiniz
+                    </div>
+                    <div class="valid-feedback">
+                        Tamam
+                    </div>
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Miktar / Türü</span>
+                    </div>
+                    <input type="number" aria-label="miktar" name="miktar" class="form-control" required>
+                    <select class="custom-select" id="atikTur" name="miktarTip" required>
+                        <option value="adet">Adet</option>
+                        <option value="gr">Gr</option>
+                        <option value="kg">Kg</option>
+                        <option value="ton">Ton</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-success btn-lg"><i class="fa fa-save"></i> Atık Ekle</button>
+            </form>
+            <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function () {
+                    'use strict';
+                    window.addEventListener('load', function () {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function (form) {
+                            form.addEventListener('submit', function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
+        </div>
+    </div>
+</div>

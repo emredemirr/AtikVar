@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+}
+<div class="row">
+    <div class="col-lg-12">
+        @if (ViewBag.message != null)
+        {
+            <div class="alert alert-info">
+                @ViewBag.message
+            </div>
+        }
+            <div class="jumbotron bg-light shadow">
+                @if (Session["userId"] == null)
+                {
+                    <h1 class="display-4">Yarınları Kurtarmaya Bugünden Başla</h1>
+                    <p class="lead">Atik Var! web uygulaması ile sisteme kayıt olup bünyenizdeki atıkları miktarlarıyla tanımlayıp, uygulamaya kayıt olduğunuz günden itibaren sayenizde gerçekleşen geri dönüşüm ve kazanımları görebelir ve yetkilelerin atıklarınızı almalarını sağlayabilirsiniz.</p>
+                    <hr class="my-4">
+                    <p>Başlamak için önce kayıt olunuz.</p>
+                    <a class="btn btn-success btn-lg my-color" href="@Url.Action("Index","Register")" role="button">Kayıt Ol</a>
+                }
+                else
+                {
+                    <h1 class="display-4">Hoşgeldin, @Session["userName"]</h1>
+                    <hr class="my-4">
+                    <p class="lead">
+                        Atik Var! web uygulaması ile sisteme kayıt olup bünyenizdeki atıkları miktarlarıyla tanımlayıp, uygulamaya kayıt olduğunuz günden itibaren sayenizde gerçekleşen geri dönüşüm ve kazanımları görebelir ve yetkilelerin atıklarınızı almalarını sağlayabilirsiniz.
+                        @if (Session["role"] != null && Session["role"].ToString() == "2")
+                        { <a class="mt-3 btn btn-outline-success btn-lg shadow btn-block my-color" href="@Url.Action("Add", "Waste")" role="button"><i class="fa fa-dumpster"></i> ATIK EKLE</a> }
+                    </p>
+                }
+            </div>
+        <h1 class="lead text-center">Atık Türleri</h1>
+        <hr class="my-4">
+    </div>
+    <div class="col-lg-3 mb-3">
+        <div class="card text-dark bg-light">
+            <div class="card-header lead"><i class="fa fa-copy text-success"></i> Kağıt Atık</div>
+            <div class="card-body" style="min-height: 208px;">
+                <p class="card-text">Kağıdın geri dönüşümü ile kullanılan hammadde miktarında önemli oranda tasarruf sağlanması ve ekonomik değerinin yüksek olması nedeniyle önemlidir</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 mb-3">
+        <div class="card text-dark bg-light">
+            <div class="card-header lead"><i class="fa fa-shopping-bag text-info"></i> Plastik Atık</div>
+            <div class="card-body">
+                <p class="card-text">Plastikler, kullanım ömrü sonunda bir kenara atılamayacak kadar değerli bir kaynaktır. Geri dönüştürülerek ilk hallerine geri getirilebilir yahut yeni bir madde oluşturabilirler.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 mb-3">
+        <div class="card text-dark bg-light">
+            <div class="card-header lead"><i class="fa fa-battery-empty text-warning"></i> Atık Pil</div>
+            <div class="card-body" style="min-height: 208px;">
+                <p class="card-text">Kullanım ömrünü tamamlamış veya uğramış olduğu fiziksel hasar sonucu kullanılmayacak duruma gelmiş pillere “Atık Pil" denir.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 mb-3">
+        <div class="card text-dark bg-light">
+            <div class="card-header lead"><i class="fa fa-wine-bottle text-info"></i> Cam Atık</div>
+            <div class="card-body" style="min-height: 208px;">
+                <p class="card-text">Camın ana maddesi kumdur. Kum, soda ve kireç. Bu malzemeler, 1500 dereceye kadar ısıtılarak eritilir.</p>
+            </div>
+        </div>
+    </div>
+</div>
